@@ -5,5 +5,5 @@ module.exports = function validateGenericSuccessfulResponse (err, pack, key, don
 
   assert(pack.headers);
   assert(pack[key]);
-  done();
+  done(null, pack);
 };
