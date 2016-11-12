@@ -5,6 +5,9 @@ var Recurly = require('../index');
 var keys = require('./keys');
 var client = new Recurly(keys);
 
+var validateGenericSuccessfulResponse = require('./utils/validateGenericSuccessfulResponse');
+var validateGenericFailureResponse = require('./utils/validateGenericFailureResponse');
+
 describe('Accounts', function () {
   var accountCode, email;
 
@@ -91,21 +94,3 @@ describe('Accounts', function () {
     client.accounts.notes(accountCode, _.partialRight(validateGenericSuccessfulResponse, 'notes', done));
   });
 });
-
-function validateGenericSuccessfulResponse (err, pack, key, done) {
-  if (typeof pack === 'function') { return pack(err); }
-
-  assert(pack.headers);
-  assert(pack[key]);
-  done();
-}
-
-function validateGenericFailureResponse (err, pack, done) {
-  if (!err) { //noinspection NodeModulesDependencies
-    return done('Error had to occur, got response instead: ' + JSON.stringify(pack));
-  }
-
-  assert(err.headers);
-  assert(err.error || err.errors);
-  pack(); // if error happened, all parameters would be shifted by one.
-}
