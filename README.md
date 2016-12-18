@@ -38,9 +38,10 @@ recurly.accounts.create({
 
 # How does this thing work?
 
-You may notice, there's no method described, that call Recurly resource. Isn't it lovely?
+You may notice, that library doesn't have any methods explicitly defined, that call Recurly resource. Isn't it lovely?
 
 Roughly saying, the library does the following:
+
 1. Get the request library.
 2. Set the default headers.
 3. Magically create methods by provided JSON files.

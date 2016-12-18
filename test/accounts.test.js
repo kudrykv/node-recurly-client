@@ -16,6 +16,19 @@ describe('Accounts', function () {
     email = accountCode + '@dummy.com';
   });
 
+  it('should fail because of no callback', function (done) {
+    try {
+      client.accounts.create({});
+      done('No callback was passed, but we got hang out.');
+    } catch (e) {
+      if (e) {
+        return done();
+      }
+
+      done('Weird things happen!');
+    }
+  });
+
   it('should fail creating an account', function tryToCreateBrokenAccount (done) {
     client.accounts.create({}, _.partialRight(validateGenericFailureResponse, done));
   });
@@ -25,6 +38,17 @@ describe('Accounts', function () {
       account_code: accountCode,
       email: email
     }, _.partialRight(validateGenericSuccessfulResponse, 'account', done));
+  });
+
+  it('should fail because URI is incomplete', function (done) {
+    client.accounts.lookup(function (err, random) {
+      if (!err) {
+        return done('Error had to happen: ' + JSON.stringify(random));
+      }
+
+      console.log(err);
+      done();
+    });
   });
 
   it('should get specific account', function getAccount (done) {
