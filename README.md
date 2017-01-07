@@ -106,3 +106,15 @@ recurly.billingInfo.lookup(accountCode, cb);
 recurly.billingInfo.update(accountCode, body, cb);
 recurly.billingInfo.clear(accountCode, cb);
 ```
+
+## (Coupons)[https://dev.recurly.com/docs/list-active-coupons]
+```js
+recurly.coupons.list(cb);
+recurly.coupons.create(body, cb);
+recurly.coupons.lookup(couponCode, cb);
+recurly.coupons.generate(couponCode, body, cb);
+recurly.coupons.expire(couponCode, cb);
+recurly.coupons.edit(couponCode, body, cb);
+recurly.coupons.restore(couponCode, body, cb);
+recurly.coupons.listUnique(couponCode, cb);
+```
