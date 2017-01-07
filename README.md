@@ -128,3 +128,14 @@ recurly.couponRedemptions.subscription(uuid, cb);
 recurly.couponRedemptions.redeem(couponCode, cb);
 recurly.couponRedemptions.remove(accountCode, uuid, cb);
 ```
+
+## [Gift cards](https://dev.recurly.com/docs/gift-card-object)
+```js
+recurly.giftCards.list(cb);
+recurly.giftCards.preview(body, cb);
+recurly.giftCards.create(body, cb);
+recurly.giftCards.lookup(id, cb);
+recurly.giftCards.redeem(redemptionCode, body, cb);
+recurly.giftCards.previewSubscription(body, cb);
+recurly.giftCards.createSubscription(body, cb);
+```
