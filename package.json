@@ -1,6 +1,6 @@
 {
   "name": "node-recurly-client",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "YANRC (Yet Another Node Recurly Client)",
   "main": "index.js",
   "scripts": {
