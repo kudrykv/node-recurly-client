@@ -171,3 +171,12 @@ recurly.planAddOns.lookup(planCode, addOnCode, cb);
 recurly.planAddOns.update(planCode, addOnCode, body, cb);
 recurly.planAddOns.delete(planCode, addOnCode, cb);
 ```
+
+## [Measured units](https://dev.recurly.com/docs/measured-unit-object)
+```js
+recurly.measuredUnits.list(cb);
+recurly.measuredUnits.create(body, cb);
+recurly.measuredUnits.lookup(measuredUnitId, cb);
+recurly.measuredUnits.update(measuredUnitId, body, cb);
+recurly.measuredUnits.delete(measuredUnitId, cb);
+```
