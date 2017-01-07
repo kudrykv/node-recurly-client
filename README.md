@@ -69,3 +69,24 @@ recurly.random.call(uriParamString1, uriParamString2, bodyObj, callback);
 
 If there are no modifiers in URI, those parameters have to be omitted.
 If there is no body, body parameter has to be omitted.
+
+# Methods
+## (Accounts)[https://dev.recurly.com/docs/account-object]
+```js
+recurly.accounts.list(cb);
+recurly.accounts.create(body, cb);
+recurly.accounts.lookup(accountCode, body, cb);
+recurly.accounts.update(accountCode, body, cb);
+recurly.accounts.close(accountCode, cb);
+recurly.accounts.reopen(accountCode, body, cb);
+recurly.accounts.balance(accountCode, cb);
+recurly.accounts.notes(accountCode, cb);
+```
+
+## (Account Acquisition)[https://dev.recurly.com/docs/create-account-acquisition]
+```js
+recurly.accountAcquisition.create(accountCode, body, callback);
+recurly.accountAcquisition.lookup(accountCode, callback);
+recurly.accountAcquisition.update(accountCode, body, callback);
+recurly.accountAcquisition.clear(accountCode, callback);
+```
