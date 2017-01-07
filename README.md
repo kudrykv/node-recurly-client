@@ -71,7 +71,7 @@ If there are no modifiers in URI, those parameters have to be omitted.
 If there is no body, body parameter has to be omitted.
 
 # Methods
-## (Accounts)[https://dev.recurly.com/docs/account-object]
+## [Accounts](https://dev.recurly.com/docs/account-object)
 ```js
 recurly.accounts.list(cb);
 recurly.accounts.create(body, cb);
@@ -83,7 +83,7 @@ recurly.accounts.balance(accountCode, cb);
 recurly.accounts.notes(accountCode, cb);
 ```
 
-## (Account Acquisition)[https://dev.recurly.com/docs/create-account-acquisition]
+## [Account Acquisition](https://dev.recurly.com/docs/create-account-acquisition)
 ```js
 recurly.accountAcquisition.create(accountCode, body, cb);
 recurly.accountAcquisition.lookup(accountCode, cb);
@@ -91,7 +91,7 @@ recurly.accountAcquisition.update(accountCode, body, cb);
 recurly.accountAcquisition.clear(accountCode, cb);
 ```
 
-## (Adjustments)[https://dev.recurly.com/docs/adjustment-object]
+## [Adjustments](https://dev.recurly.com/docs/adjustment-object)
 ```js
 recurly.adjustments.list(accountCode, cb);
 recurly.adjustments.create(accountCode, body, cb);
@@ -99,7 +99,7 @@ recurly.adjustments.lookup(uuid, cb);
 recurly.adjustments.delete(uuid, cb);
 ```
 
-## (Billing info)[https://dev.recurly.com/docs/create-an-accounts-billing-info-token]
+## [Billing info](https://dev.recurly.com/docs/create-an-accounts-billing-info-token)
 ```js
 recurly.billingInfo.create(accountCode, body, cb);
 recurly.billingInfo.lookup(accountCode, cb);
@@ -107,7 +107,7 @@ recurly.billingInfo.update(accountCode, body, cb);
 recurly.billingInfo.clear(accountCode, cb);
 ```
 
-## (Coupons)[https://dev.recurly.com/docs/list-active-coupons]
+## [Coupons](https://dev.recurly.com/docs/list-active-coupons)
 ```js
 recurly.coupons.list(cb);
 recurly.coupons.create(body, cb);
