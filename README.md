@@ -98,3 +98,11 @@ recurly.adjustments.create(accountCode, body, cb);
 recurly.adjustments.lookup(uuid, cb);
 recurly.adjustments.delete(uuid, cb);
 ```
+
+## (Billing info)[https://dev.recurly.com/docs/create-an-accounts-billing-info-token]
+```js
+recurly.billingInfo.create(accountCode, body, cb);
+recurly.billingInfo.lookup(accountCode, cb);
+recurly.billingInfo.update(accountCode, body, cb);
+recurly.billingInfo.clear(accountCode, cb);
+```
