@@ -139,3 +139,17 @@ recurly.giftCards.redeem(redemptionCode, body, cb);
 recurly.giftCards.previewSubscription(body, cb);
 recurly.giftCards.createSubscription(body, cb);
 ```
+
+## [Invoices](https://dev.recurly.com/docs/list-invoices)
+```js
+recurly.invoices.list(cb);
+recurly.invoices.listAccount(accountCode, cb);
+recurly.invoices.preview(accountCode, body, cb);
+recurly.invoices.post(accountCode, body, cb);
+recurly.invoices.lookup(invoiceNumber, cb);
+recurly.invoices.markAsPaid(invoiceNumber, cb);
+recurly.invoices.markAsFailed(invoiceNumber, cb);
+recurly.invoices.refundLineItem(invoiceNumber, body, cb);
+recurly.invoices.refundOpenAmount(invoiceNumber, body, cb);
+recurly.invoices.offlinePayment(invoiceNumber, body, cb);
+```
