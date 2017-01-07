@@ -180,3 +180,18 @@ recurly.measuredUnits.lookup(measuredUnitId, cb);
 recurly.measuredUnits.update(measuredUnitId, body, cb);
 recurly.measuredUnits.delete(measuredUnitId, cb);
 ```
+
+## [Subscriptions](https://dev.recurly.com/docs/list-subscriptions)
+```js
+recurly.subscriptions.list(accountCode, cb);
+recurly.subscriptions.preview(body, cb);
+recurly.subscriptions.create(body, cb);
+recurly.subscriptions.lookup(uuid, cb);
+recurly.subscriptions.previewChange(uuid, body, cb);
+recurly.subscriptions.update(uuid, body, cb);
+recurly.subscriptions.updateNotes(uuid, body, cb);
+recurly.subscriptions.cancel(uuid, cb);
+recurly.subscriptions.reactivate(uuid, cb);
+recurly.subscriptions.terminate(uuid, refundType, charge, cb);
+recurly.subscriptions.postpone(uuid, nextRenewalDate, bulk, cb);
+```
