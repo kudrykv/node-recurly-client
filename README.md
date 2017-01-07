@@ -153,3 +153,12 @@ recurly.invoices.refundLineItem(invoiceNumber, body, cb);
 recurly.invoices.refundOpenAmount(invoiceNumber, body, cb);
 recurly.invoices.offlinePayment(invoiceNumber, body, cb);
 ```
+
+## [Plans](https://dev.recurly.com/docs/list-plans)
+```js
+recurly.plans.list(cb);
+recurly.plans.create(body, cb);
+recurly.plans.lookup(planCode, cb);
+recurly.plans.update(planCode, cb);
+recurly.plans.delete(planCode, cb);
+```
