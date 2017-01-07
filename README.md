@@ -162,3 +162,12 @@ recurly.plans.lookup(planCode, cb);
 recurly.plans.update(planCode, cb);
 recurly.plans.delete(planCode, cb);
 ```
+
+## [Plan add-ons](https://dev.recurly.com/docs/plan-add-ons-object)
+```js
+recurly.planAddOns.list(planCode, cb);
+recurly.planAddOns.create(planCode, body, cb);
+recurly.planAddOns.lookup(planCode, addOnCode, cb);
+recurly.planAddOns.update(planCode, addOnCode, body, cb);
+recurly.planAddOns.delete(planCode, addOnCode, cb);
+```
