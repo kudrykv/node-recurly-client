@@ -118,3 +118,13 @@ recurly.coupons.edit(couponCode, body, cb);
 recurly.coupons.restore(couponCode, body, cb);
 recurly.coupons.listUnique(couponCode, cb);
 ```
+
+## [Coupon redemptions](https://dev.recurly.com/docs/lookup-a-coupon-redemption-on-an-account)
+```js
+recurly.couponRedemptions.account(accountCode, cb);
+recurly.couponRedemptions.coupon(accountCode, redemptionUuid, cb);
+recurly.couponRedemptions.invoice(invoiceNumber, cb);
+recurly.couponRedemptions.subscription(uuid, cb);
+recurly.couponRedemptions.redeem(couponCode, cb);
+recurly.couponRedemptions.remove(accountCode, uuid, cb);
+```
