@@ -85,8 +85,16 @@ recurly.accounts.notes(accountCode, cb);
 
 ## (Account Acquisition)[https://dev.recurly.com/docs/create-account-acquisition]
 ```js
-recurly.accountAcquisition.create(accountCode, body, callback);
-recurly.accountAcquisition.lookup(accountCode, callback);
-recurly.accountAcquisition.update(accountCode, body, callback);
-recurly.accountAcquisition.clear(accountCode, callback);
+recurly.accountAcquisition.create(accountCode, body, cb);
+recurly.accountAcquisition.lookup(accountCode, cb);
+recurly.accountAcquisition.update(accountCode, body, cb);
+recurly.accountAcquisition.clear(accountCode, cb);
+```
+
+## (Adjustments)[https://dev.recurly.com/docs/adjustment-object]
+```js
+recurly.adjustments.list(accountCode, cb);
+recurly.adjustments.create(accountCode, body, cb);
+recurly.adjustments.lookup(uuid, cb);
+recurly.adjustments.delete(uuid, cb);
 ```
