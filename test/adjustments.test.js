@@ -1,51 +1,56 @@
 var _ = require('lodash');
 var assert = require('assert');
+var nock = require('nock');
 
 var Recurly = require('../index');
 var keys = require('./keys');
 var client = new Recurly(keys);
+var data = require('./adjustments.data');
+var json2xml = require('../lib/utils/json2xml');
+var rNock = nock('https://' + keys.subdomain + '.recurly.com').defaultReplyHeaders({
+  'Content-Type': 'application/xml'
+});
 
 var validateGenericSuccessfulResponse = require('./utils/validateGenericSuccessfulResponse');
 var validateGenericFailureResponse = require('./utils/validateGenericFailureResponse');
 
 describe('Account Acquisition', function () {
-  var accountCode, email, uuid;
+  beforeEach(function () {
+    nock.cleanAll();
+  });
 
-  before(function (done) {
-    accountCode = 'deadbeef' + Date.now();
-    email = accountCode + '@dummy.com';
-
-    client.accounts.create({
-      account_code: accountCode,
-      email: email
-    }, _.partialRight(validateGenericSuccessfulResponse, 'account', done))
+  afterEach(function () {
+    assert(rNock.isDone(), 'Nock has not been called.');
   });
 
   it('should list account adjustments', function list (done) {
-    client.adjustments.list(accountCode, _.partialRight(validateGenericSuccessfulResponse, 'adjustments', done));
+    rNock.get('/v2/accounts/deadbeef/adjustments').reply(200, data.adjustments.xml);
+
+    client.adjustments.list('deadbeef', _.partialRight(validateGenericSuccessfulResponse, 'adjustments', done));
   });
 
   it('should create a charge', function create (done) {
-    client.adjustments.create(accountCode, {
+    var body = {
       currency: keys.currency,
       unit_amount_in_cents: 300
-    }, _.partialRight(validateGenericSuccessfulResponse, 'adjustment', done));
+    };
+
+    rNock.post('/v2/accounts/deadbeef/adjustments', json2xml('adjustment', body)).reply(200, data.charge.xml);
+
+    client.adjustments.create('deadbeef', body, _.partialRight(validateGenericSuccessfulResponse, 'adjustment', done));
   });
 
   it('should lookup an adjustment', function lookup (done) {
-    client.adjustments.create(accountCode, {
-      currency: keys.currency,
-      unit_amount_in_cents: 300
-    }, _.partialRight(validateGenericSuccessfulResponse, 'adjustment', function (err, pack) {
-      if (err) { return done(err); }
+    var uuid = '37c0031340577f993ff30b41738f52ff';
+    rNock.get('/v2/adjustments/' + uuid).reply(200, data.charge.xml);
 
-      uuid = pack.adjustment.uuid;
-
-      client.adjustments.lookup(uuid, _.partialRight(validateGenericSuccessfulResponse, 'adjustment', done));
-    }))
+    client.adjustments.lookup(uuid, _.partialRight(validateGenericSuccessfulResponse, 'adjustment', done));
   });
 
   it('should delete an adjustment', function destroy (done) {
+    var uuid = '37c0031340577f993ff30b41738f52ff';
+    rNock.delete('/v2/adjustments/' + uuid).reply(204);
+
     client.adjustments.delete(uuid, function (err, pack) {
       if (err) { return done(err); }
 

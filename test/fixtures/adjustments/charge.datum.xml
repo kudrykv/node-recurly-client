@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adjustment href="https://your-subdomain.recurly.com/v2/adjustments/37c0031340577f993ff30b41738f52ff" type="charge">
+    <account href="https://your-subdomain.recurly.com/v2/accounts/1"/>
+    <uuid>37c0031340577f993ff30b41738f52ff</uuid>
+    <state>pending</state>
+    <description></description>
+    <accounting_code></accounting_code>
+    <product_code nil="nil"/>
+    <origin>debit</origin>
+    <unit_amount_in_cents type="integer">300</unit_amount_in_cents>
+    <quantity type="integer">1</quantity>
+    <discount_in_cents type="integer">0</discount_in_cents>
+    <tax_in_cents type="integer">0</tax_in_cents>
+    <total_in_cents type="integer">5000</total_in_cents>
+    <currency>USD</currency>
+    <taxable type="boolean">false</taxable>
+    <tax_exempt type="boolean">false</tax_exempt>
+    <tax_code nil="nil"/>
+    <start_date type="datetime">2016-08-03T16:23:48Z</start_date>
+    <end_date nil="nil"/>
+    <created_at type="datetime">2016-08-03T16:23:48Z</created_at>
+    <updated_at type="datetime">2016-08-03T16:23:48Z</updated_at>
+    <revenue_schedule_type>at_invoice</revenue_schedule_type>
+</adjustment>
