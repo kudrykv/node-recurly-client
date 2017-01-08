@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coupons type="array">
+    <coupon href="https://your-subdomain.recurly.com/v2/coupons/special">
+        <redemptions href="https://your-subdomain.recurly.com/v2/coupons/special/redemptions"/>
+        <coupon_code>special</coupon_code>
+        <name>Special 10% off</name>
+        <state>redeemable</state>
+        <description nil="nil"/>
+        <discount_type>percent</discount_type>
+        <discount_percent type="integer">10</discount_percent>
+        <invoice_description nil="nil"/>
+        <redeem_by_date type="datetime">2017-12-31T00:00:00Z</redeem_by_date>
+        <single_use type="boolean">true</single_use>
+        <applies_for_months nil="nil"/>
+        <max_redemptions type="integer">200</max_redemptions>
+        <applies_to_all_plans type="boolean">false</applies_to_all_plans>
+        <created_at type="datetime">2016-07-11T18:50:17Z</created_at>
+        <updated_at type="datetime">2016-07-11T18:50:17Z</updated_at>
+        <deleted_at nil="nil"/>
+        <duration>single_use</duration>
+        <temporal_unit nil="nil"/>
+        <temporal_amount nil="nil"/>
+        <applies_to_non_plan_charges type="boolean">false</applies_to_non_plan_charges>
+        <redemption_resource>account</redemption_resource>
+        <max_redemptions_per_account nil="nil"/>
+        <coupon_type>single_code</coupon_type>
+        <plan_codes type="array">
+            <plan_code>gold</plan_code>
+            <plan_code>platinum</plan_code>
+        </plan_codes>
+        <a name="redeem" href="https://your-subdomain.recurly.com/v2/coupons/special/redeem" method="post"/>
+    </coupon>
+    <!-- Continued... -->
+</coupons>
