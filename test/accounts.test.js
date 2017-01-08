@@ -1,22 +1,29 @@
 var _ = require('lodash');
 var assert = require('assert');
+var nock = require('nock');
 
 var Recurly = require('../index');
 var keys = require('./keys');
 var client = new Recurly(keys);
+var data = require('./account.data');
+var json2xml = require('../lib/utils/json2xml');
+var rNock = nock('https://' + keys.subdomain + '.recurly.com').defaultReplyHeaders({
+  'Content-Type': 'application/xml'
+});
 
 var validateGenericSuccessfulResponse = require('./utils/validateGenericSuccessfulResponse');
 var validateGenericFailureResponse = require('./utils/validateGenericFailureResponse');
 
 describe('Accounts', function () {
-  var accountCode, email;
-
-  before(function () {
-    accountCode = 'deadbeef' + Date.now();
-    email = accountCode + '@dummy.com';
+  beforeEach(function () {
+    nock.cleanAll();
   });
 
-  it('should fail because of no callback', function (done) {
+  afterEach(function () {
+    assert(rNock.isDone(), 'Nock has not been called.');
+  });
+
+  it('should fail because of no callback', function noCallback (done) {
     try {
       client.accounts.create({});
       done('No callback was passed, but we got hang out.');
@@ -30,17 +37,18 @@ describe('Accounts', function () {
   });
 
   it('should fail creating an account', function tryToCreateBrokenAccount (done) {
+    rNock.post('/v2/accounts').reply(422, data.badData.xml);
+
     client.accounts.create({}, _.partialRight(validateGenericFailureResponse, done));
   });
 
   it('should create an account', function createAccount (done) {
-    client.accounts.create({
-      account_code: accountCode,
-      email: email
-    }, _.partialRight(validateGenericSuccessfulResponse, 'account', done));
+    rNock.post('/v2/accounts', json2xml('account', data.requests.create)).reply(201, data.account.xml);
+
+    client.accounts.create(data.requests.create, _.partialRight(validateGenericSuccessfulResponse, 'account', done));
   });
 
-  it('should fail because URI is incomplete', function (done) {
+  it('should fail because URI is incomplete', function incompleteUrl (done) {
     client.accounts.lookup(function (err, random) {
       if (!err) {
         return done('Error had to happen: ' + JSON.stringify(random));
@@ -52,41 +60,39 @@ describe('Accounts', function () {
   });
 
   it('should get specific account', function getAccount (done) {
-    client.accounts.lookup(accountCode, _.partialRight(validateGenericSuccessfulResponse, 'account', done));
+    rNock.get('/v2/accounts/' + data.requests.create.account_code).reply(200, data.account.xml);
+
+    client.accounts.lookup(data.requests.create.account_code, _.partialRight(validateGenericSuccessfulResponse, 'account', done));
   });
 
   it('should 404 for unknown account code', function getUnknownAccount (done) {
-    client.accounts.lookup(accountCode + '111', _.partialRight(validateGenericFailureResponse, done));
+    rNock.get('/v2/accounts/unknown').reply(404, data.unknown.xml);
+
+    client.accounts.lookup('unknown', _.partialRight(validateGenericFailureResponse, done));
   });
 
   it('should get list of accounts without passing additional parameters', function listWithoutParameters (done) {
+    rNock.get('/v2/accounts').reply(200, data.accounts.xml);
+
     client.accounts.list(_.partialRight(validateGenericSuccessfulResponse, 'accounts', done));
   });
 
   it('should get list of accounts understanding additional parameters', function listWithParameters (done) {
-    client.accounts.list({
-      state: 'active'
-    }, function (err, pack) {
-      if (err) { return done(err); }
+    rNock.get('/v2/accounts?state=active').reply(200, data.accounts.xml);
 
-      assert(pack.headers);
-      assert(pack.accounts);
-
-      _.forEach([].concat(pack.accounts.account), function (account) {
-        //noinspection NodeModulesDependencies
-        assert(account.state, 'active', 'Account has to be active due to filter rules: ' + JSON.stringify(account));
-      });
-
-      done();
-    });
+    client.accounts.list({state: 'active'}, _.partialRight(validateGenericSuccessfulResponse, 'accounts', done));
   });
 
   it('should fail close 404 account', function close404Account (done) {
-    client.accounts.close(accountCode + '404', _.partialRight(validateGenericFailureResponse, done));
+    rNock.delete('/v2/accounts/unknown').reply(404, data.unknown.xml);
+
+    client.accounts.close('unknown', _.partialRight(validateGenericFailureResponse, done));
   });
 
   it('should close the account', function closeAccount (done) {
-    client.accounts.close(accountCode, function (err, pack) {
+    rNock.delete('/v2/accounts/deadbeef').reply(204);
+
+    client.accounts.close('deadbeef', function (err, pack) {
       if (err) { return done(err); }
 
       assert(pack.headers);
@@ -95,26 +101,38 @@ describe('Accounts', function () {
   });
 
   it('should fail reopen 404 account', function reopen404Account (done) {
-    client.accounts.reopen(accountCode + '404', _.partialRight(validateGenericFailureResponse, done));
+    rNock.put('/v2/accounts/unknown/reopen', json2xml('account', {})).reply(404, data.unknown.xml);
+
+    client.accounts.reopen('unknown', _.partialRight(validateGenericFailureResponse, done));
   });
 
   it('should reopen closed account', function reopenAccount (done) {
-    client.accounts.reopen(accountCode, _.partialRight(validateGenericSuccessfulResponse, 'account', done));
+    rNock.put('/v2/accounts/deadbeef/reopen', json2xml('account', {})).reply(200, data.account.xml);
+
+    client.accounts.reopen('deadbeef', _.partialRight(validateGenericSuccessfulResponse, 'account', done));
   });
 
   it('should fail getting balance because of 404', function getBalanceFrom404 (done) {
-    client.accounts.balance(accountCode + '404', _.partialRight(validateGenericFailureResponse, done));
+    rNock.get('/v2/accounts/unknown/balance').reply(404, data.unknown.xml);
+
+    client.accounts.balance('unknown', _.partialRight(validateGenericFailureResponse, done));
   });
 
   it('should get account balance', function getBalance (done) {
-    client.accounts.balance(accountCode, _.partialRight(validateGenericSuccessfulResponse, 'account_balance', done));
+    rNock.get('/v2/accounts/deadbeef/balance').reply(200, data.balance.xml);
+
+    client.accounts.balance('deadbeef', _.partialRight(validateGenericSuccessfulResponse, 'account_balance', done));
   });
 
   it('should fail getting notes because of 404', function getNotes404 (done) {
-    client.accounts.notes(accountCode + '404', _.partialRight(validateGenericFailureResponse, done));
+    rNock.get('/v2/accounts/unknown/notes').reply(404, data.unknown.xml);
+
+    client.accounts.notes('unknown', _.partialRight(validateGenericFailureResponse, done));
   });
 
   it('should get notes', function getNotes (done) {
-    client.accounts.notes(accountCode, _.partialRight(validateGenericSuccessfulResponse, 'notes', done));
+    rNock.get('/v2/accounts/deadbeef/notes').reply(200, data.notes.xml);
+
+    client.accounts.notes('deadbeef', _.partialRight(validateGenericSuccessfulResponse, 'notes', done));
   });
 });
