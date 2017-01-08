@@ -1,44 +1,56 @@
 var _ = require('lodash');
 var assert = require('assert');
+var nock = require('nock');
 
 var Recurly = require('../index');
 var keys = require('./keys');
 var client = new Recurly(keys);
+var data = require('./accountAcquisition.data');
+var json2xml = require('../lib/utils/json2xml');
+var rNock = nock('https://' + keys.subdomain + '.recurly.com').defaultReplyHeaders({
+  'Content-Type': 'application/xml'
+});
 
 var validateGenericSuccessfulResponse = require('./utils/validateGenericSuccessfulResponse');
 var validateGenericFailureResponse = require('./utils/validateGenericFailureResponse');
 
 describe('Account Acquisition', function () {
-  var accountCode, email;
+  beforeEach(function () {
+    nock.cleanAll();
+  });
 
-  before(function (done) {
-    accountCode = 'deadbeef' + Date.now();
-    email = accountCode + '@dummy.com';
-
-    client.accounts.create({
-      account_code: accountCode,
-      email: email
-    }, _.partialRight(validateGenericSuccessfulResponse, 'account', done))
+  afterEach(function () {
+    assert(rNock.isDone(), 'Nock has not been called.');
   });
 
   it('should fail to create account acquisition', function account404 (done) {
-    client.accountAcquisition.create(accountCode + '404', {}, _.partialRight(validateGenericFailureResponse, done));
+    rNock.post('/v2/accounts/unknown/acquisition', json2xml('account_acquisition', {})).reply(404, data.unknown.xml);
+
+    client.accountAcquisition.create('unknown', {}, _.partialRight(validateGenericFailureResponse, done));
   });
 
   it('should create account acquisition', function accountAcquisition (done) {
-    client.accountAcquisition.create(accountCode, {}, _.partialRight(validateGenericSuccessfulResponse, 'account_acquisition', done));
+    rNock.post('/v2/accounts/deadbeef/acquisition', json2xml('account_acquisition', {})).reply(200, data.acquisition.xml);
+
+    client.accountAcquisition.create('deadbeef', {}, _.partialRight(validateGenericSuccessfulResponse, 'account_acquisition', done));
   });
 
   it('should lookup account acquisition', function lookupAccountAcquisition (done) {
-    client.accountAcquisition.lookup(accountCode, _.partialRight(validateGenericSuccessfulResponse, 'account_acquisition', done));
+    rNock.get('/v2/accounts/deadbeef/acquisition').reply(200, data.acquisition.xml);
+
+    client.accountAcquisition.lookup('deadbeef', _.partialRight(validateGenericSuccessfulResponse, 'account_acquisition', done));
   });
 
   it('should update account acquisition', function accountAcquisition (done) {
-    client.accountAcquisition.update(accountCode, {}, _.partialRight(validateGenericSuccessfulResponse, 'account_acquisition', done));
+    rNock.put('/v2/accounts/deadbeef/acquisition', json2xml('account_acquisition', {})).reply(200, data.acquisition.xml);
+
+    client.accountAcquisition.update('deadbeef', {}, _.partialRight(validateGenericSuccessfulResponse, 'account_acquisition', done));
   });
 
   it('should clear account acquisition', function accountAcquisition (done) {
-    client.accountAcquisition.clear(accountCode, {}, function (err, pack) {
+    rNock.delete('/v2/accounts/deadbeef/acquisition').reply(204, data.acquisition.xml);
+
+    client.accountAcquisition.clear('deadbeef', function (err, pack) {
       if (err) { return done(err); }
 
       assert(pack.headers);
