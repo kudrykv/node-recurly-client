@@ -5,7 +5,7 @@ var nock = require('nock');
 var Recurly = require('../../index');
 var keys = require('./keys');
 var client = new Recurly(keys);
-var data = require('./coupons.data.js');
+var data = require('./coupons.data');
 var json2xml = require('../../lib/utils/json2xml');
 var rNock = nock('https://' + keys.subdomain + '.recurly.com').defaultReplyHeaders({
   'Content-Type': 'application/xml'
