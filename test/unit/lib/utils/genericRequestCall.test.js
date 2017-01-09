@@ -51,4 +51,30 @@ describe('Generic request call', function () {
       done();
     }
   });
+
+  it('should make an error because of insufficient number of parameters', function notEnough (done) {
+    genericRequestCall(empty, empty, host, postBlueprint, 'first', {}, callback);
+
+    function callback (err, random) {
+      if (!err) {
+        done(new Error(JSON.stringify(random)));
+      }
+
+      console.log(err);
+      done();
+    }
+  });
+
+  it('should make an error because of too many number of parameters', function tooMuch (done) {
+    genericRequestCall(empty, empty, host, postBlueprint, 'first', 'second', 'third', {}, callback);
+
+    function callback (err, random) {
+      if (!err) {
+        done(new Error(JSON.stringify(random)));
+      }
+
+      console.log(err);
+      done();
+    }
+  });
 });
