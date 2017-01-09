@@ -28,20 +28,20 @@ describe('Billing info', function () {
     var body = {token_id: 'billing-token'};
     rNock.post('/v2/accounts/deadbeef/billing_info', json2xml('billing_info', body)).reply(200, data.billingInfo.xml);
 
-    client.billingInfo.create('deadbeef', body, _.partialRight(validateGenericSuccessfulResponse, 'billing_info', done));
+    client.billingInfo.create('deadbeef', body, _.partialRight(validateGenericSuccessfulResponse, data.billingInfo.json, done));
   });
 
   it('should lookup for billing info', function lookup (done) {
     rNock.get('/v2/accounts/deadbeef/billing_info').reply(200, data.billingInfo.xml);
 
-    client.billingInfo.lookup('deadbeef', _.partialRight(validateGenericSuccessfulResponse, 'billing_info', done));
+    client.billingInfo.lookup('deadbeef', _.partialRight(validateGenericSuccessfulResponse, data.billingInfo.json, done));
   });
 
   it('should update billing info', function update (done) {
     var body = {token_id: 'billing-token'};
     rNock.put('/v2/accounts/deadbeef/billing_info', json2xml('billing_info', body)).reply(200, data.billingInfo.xml);
 
-    client.billingInfo.update('deadbeef', body, _.partialRight(validateGenericSuccessfulResponse, 'billing_info', done));
+    client.billingInfo.update('deadbeef', body, _.partialRight(validateGenericSuccessfulResponse, data.billingInfo.json, done));
   });
 
   it('should clear billing info', function clear (done) {

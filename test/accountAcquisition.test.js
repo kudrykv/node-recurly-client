@@ -26,25 +26,25 @@ describe('Account Acquisition', function () {
   it('should fail to create account acquisition', function account404 (done) {
     rNock.post('/v2/accounts/unknown/acquisition', json2xml('account_acquisition', {})).reply(404, data.unknown.xml);
 
-    client.accountAcquisition.create('unknown', {}, _.partialRight(validateGenericFailureResponse, done));
+    client.accountAcquisition.create('unknown', {}, _.partialRight(validateGenericFailureResponse, data.unknown.json, done));
   });
 
   it('should create account acquisition', function accountAcquisition (done) {
     rNock.post('/v2/accounts/deadbeef/acquisition', json2xml('account_acquisition', {})).reply(200, data.acquisition.xml);
 
-    client.accountAcquisition.create('deadbeef', {}, _.partialRight(validateGenericSuccessfulResponse, 'account_acquisition', done));
+    client.accountAcquisition.create('deadbeef', {}, _.partialRight(validateGenericSuccessfulResponse, data.acquisition.json, done));
   });
 
   it('should lookup account acquisition', function lookupAccountAcquisition (done) {
     rNock.get('/v2/accounts/deadbeef/acquisition').reply(200, data.acquisition.xml);
 
-    client.accountAcquisition.lookup('deadbeef', _.partialRight(validateGenericSuccessfulResponse, 'account_acquisition', done));
+    client.accountAcquisition.lookup('deadbeef', _.partialRight(validateGenericSuccessfulResponse, data.acquisition.json, done));
   });
 
   it('should update account acquisition', function accountAcquisition (done) {
     rNock.put('/v2/accounts/deadbeef/acquisition', json2xml('account_acquisition', {})).reply(200, data.acquisition.xml);
 
-    client.accountAcquisition.update('deadbeef', {}, _.partialRight(validateGenericSuccessfulResponse, 'account_acquisition', done));
+    client.accountAcquisition.update('deadbeef', {}, _.partialRight(validateGenericSuccessfulResponse, data.acquisition.json, done));
   });
 
   it('should clear account acquisition', function accountAcquisition (done) {

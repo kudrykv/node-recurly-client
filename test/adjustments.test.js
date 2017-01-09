@@ -26,7 +26,7 @@ describe('Account Acquisition', function () {
   it('should list account adjustments', function list (done) {
     rNock.get('/v2/accounts/deadbeef/adjustments').reply(200, data.adjustments.xml);
 
-    client.adjustments.list('deadbeef', _.partialRight(validateGenericSuccessfulResponse, 'adjustments', done));
+    client.adjustments.list('deadbeef', _.partialRight(validateGenericSuccessfulResponse, data.adjustments.json, done));
   });
 
   it('should create a charge', function create (done) {
@@ -37,14 +37,14 @@ describe('Account Acquisition', function () {
 
     rNock.post('/v2/accounts/deadbeef/adjustments', json2xml('adjustment', body)).reply(200, data.charge.xml);
 
-    client.adjustments.create('deadbeef', body, _.partialRight(validateGenericSuccessfulResponse, 'adjustment', done));
+    client.adjustments.create('deadbeef', body, _.partialRight(validateGenericSuccessfulResponse, data.charge.json, done));
   });
 
   it('should lookup an adjustment', function lookup (done) {
     var uuid = '37c0031340577f993ff30b41738f52ff';
     rNock.get('/v2/adjustments/' + uuid).reply(200, data.charge.xml);
 
-    client.adjustments.lookup(uuid, _.partialRight(validateGenericSuccessfulResponse, 'adjustment', done));
+    client.adjustments.lookup(uuid, _.partialRight(validateGenericSuccessfulResponse, data.charge.json, done));
   });
 
   it('should delete an adjustment', function destroy (done) {

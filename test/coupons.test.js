@@ -33,19 +33,19 @@ describe('Coupons', function () {
   it('should list coupons', function list (done) {
     rNock.get('/v2/coupons').reply(200, data.coupons.xml);
 
-    client.coupons.list(_.partialRight(validateGenericSuccessfulResponse, 'coupons', done));
+    client.coupons.list(_.partialRight(validateGenericSuccessfulResponse, data.coupons.json, done));
   });
 
   it('should create an coupon', function create (done) {
     rNock.post('/v2/coupons', json2xml('coupon', singleCoupon)).reply(201, data.coupon.xml);
 
-    client.coupons.create(singleCoupon, _.partialRight(validateGenericSuccessfulResponse, 'coupon', done));
+    client.coupons.create(singleCoupon, _.partialRight(validateGenericSuccessfulResponse, data.coupon.json, done));
   });
 
   it('should lookup the coupon', function lookup (done) {
     rNock.get('/v2/coupons/deadbeef').reply(200, data.coupon.xml);
 
-    client.coupons.lookup(singleCoupon.coupon_code, _.partialRight(validateGenericSuccessfulResponse, 'coupon', done));
+    client.coupons.lookup(singleCoupon.coupon_code, _.partialRight(validateGenericSuccessfulResponse, data.coupon.json, done));
   });
 
   it.skip('should generate unique codes', function generate (done) {
@@ -75,17 +75,17 @@ describe('Coupons', function () {
   it('should restore the coupon', function restore (done) {
     rNock.put('/v2/coupons/deadbeef/restore').reply(200, data.coupon.xml);
 
-    client.coupons.restore(singleCoupon.coupon_code, _.partialRight(validateGenericSuccessfulResponse, 'coupon', done));
+    client.coupons.restore(singleCoupon.coupon_code, _.partialRight(validateGenericSuccessfulResponse, data.coupon.json, done));
   });
 
   it('should edit the coupon', function edit (done) {
     var body = {name: 'Coupon for testing purposes'};
     rNock.put('/v2/coupons/deadbeef', json2xml('coupon', body)).reply(200, data.coupon.xml);
 
-    client.coupons.edit('deadbeef', body, _.partialRight(validateGenericSuccessfulResponse, 'coupon', done));
+    client.coupons.edit('deadbeef', body, _.partialRight(validateGenericSuccessfulResponse, data.coupon.json, done));
   });
 
   it.skip('should list unique coupon codes', function listUnique (done) {
-    client.coupons.listUnique(bulkCouponCode.coupon_code, _.partialRight(validateGenericSuccessfulResponse, 'coupon', done));
+    client.coupons.listUnique(bulkCouponCode.coupon_code, _.partialRight(validateGenericSuccessfulResponse, data.coupon.json, done));
   });
 });
