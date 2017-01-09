@@ -3,11 +3,11 @@ var request = require('request');
 var assert = require('assert');
 var nock = require('nock');
 
-var Recurly = require('../index');
+var Recurly = require('../../index');
 var keys = require('./keys');
 var client = new Recurly(keys);
-var data = require('./billingInfo.data');
-var json2xml = require('../lib/utils/json2xml');
+var data = require('./billingInfo.data.js');
+var json2xml = require('../../lib/utils/json2xml');
 var rNock = nock('https://' + keys.subdomain + '.recurly.com').defaultReplyHeaders({
   'Content-Type': 'application/xml'
 });
