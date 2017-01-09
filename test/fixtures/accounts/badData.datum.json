@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "error": [
+      "can't be blank",
+      "is invalid"
+    ]
+  },
+  "headers": {
+    "content-type": "application/xml"
+  }
+}

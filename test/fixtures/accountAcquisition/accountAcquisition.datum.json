@@ -1,0 +1,12 @@
+{
+  "account_acquisition": {
+    "account": "",
+    "cost_in_cents": 199,
+    "currency": "USD",
+    "channel": "blog",
+    "subchannel": "Whitepaper Blog Post",
+    "campaign": "mailchimp67a904de95.0914d8f4b4",
+    "created_at": 1471031114000,
+    "updated_at": 1471031114000
+  }, "headers": {"content-type": "application/xml"}
+}

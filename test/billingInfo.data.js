@@ -3,28 +3,6 @@ var fs = require('fs');
 module.exports = {
   billingInfo: {
     xml: fs.readFileSync(__dirname + '/fixtures/billingInfo/billingInfo.datum.xml'),
-    json: {
-      "billing_info": {
-        "account": "",
-        "first_name": "Verena",
-        "last_name": "Example",
-        "company": "",
-        "address1": "123 Main St.",
-        "address2": "",
-        "city": "San Francisco",
-        "state": "CA",
-        "zip": 94105,
-        "country": "US",
-        "phone": "",
-        "vat_number": "US1234567890",
-        "ip_address": "127.0.0.1",
-        "ip_address_country": "US",
-        "card_type": "Visa",
-        "year": 2019,
-        "month": 11,
-        "first_six": 411111,
-        "last_four": 1111
-      }, "headers": {"content-type": "application/xml"}
-    }
+    json: require('./fixtures/billingInfo/billingInfo.datum.json')
   }
 };
