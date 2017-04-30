@@ -49,4 +49,12 @@ describe('Coupons', function () {
 
     client.giftCards.lookup(id, _.partialRight(validateGenericSuccessfulResponse, data.card.json, done));
   });
+
+  it('should redeem the gift card', function redeem (done) {
+    var id = data.card.json.gift_card.id;
+    var body = {account_code: 'deadbeef'};
+    rNock.post('/v2/gift_cards/' + id + '/redeem', json2xml('recipient_account', body)).reply(200, data.card.xml);
+
+    client.giftCards.redeem(id, body, _.partialRight(validateGenericSuccessfulResponse, data.card.json, done));
+  });
 });
