@@ -35,4 +35,18 @@ describe('Coupons', function () {
 
     client.giftCards.preview(data.card.json.gift_card, _.partialRight(validateGenericSuccessfulResponse, data.card.json, done));
   });
+  
+  it('should create gift card', function create (done) {
+    var requestBody = json2xml('gift_card', data.card.json.gift_card);
+    rNock.post('/v2/gift_cards', requestBody).reply(200, data.card.xml);
+
+    client.giftCards.create(data.card.json.gift_card, _.partialRight(validateGenericSuccessfulResponse, data.card.json, done));
+  });
+
+  it('should lookup gift card by id', function lookup (done) {
+    var id = data.card.json.gift_card.id;
+    rNock.get('/v2/gift_cards/' + id).reply(200, data.card.xml);
+
+    client.giftCards.lookup(id, _.partialRight(validateGenericSuccessfulResponse, data.card.json, done));
+  });
 });
