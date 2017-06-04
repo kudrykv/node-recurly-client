@@ -1,0 +1,19 @@
+{
+  "notes": {
+    "note": [
+      {
+        "account": "",
+        "message": "This is my second note",
+        "created_at": 1434298121000
+      },
+      {
+        "account": "",
+        "message": "This is my first note",
+        "created_at": 1465833981000
+      }
+    ]
+  },
+  "headers": {
+    "content-type": "application/xml"
+  }
+}

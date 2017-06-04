@@ -1,0 +1,9 @@
+{
+  "error": {
+    "symbol": "not_found",
+    "description": "Couldn't find Account with account_code = unknown"
+  },
+  "headers": {
+    "content-type": "application/xml"
+  }
+}

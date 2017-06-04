@@ -1,0 +1,18 @@
+{
+  "redemption": {
+    "coupon": "",
+    "account": "",
+    "subscription": "",
+    "uuid": "374a1c75374bd81493a3f7425db0a2b8",
+    "single_use": true,
+    "total_discounted_in_cents": 0,
+    "currency": "USD",
+    "state": "active",
+    "coupon_code": "special",
+    "created_at": 1468263380000,
+    "updated_at": 1468263380000
+  },
+  "headers": {
+    "content-type": "application/xml"
+  }
+}

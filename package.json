@@ -4,7 +4,7 @@
   "description": "YANRC (Yet Another Node Recurly Client)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive test"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,8 @@
     "xml2js": "^0.4.17"
   },
   "devDependencies": {
-    "mocha": "^3.1.2"
+    "mocha": "^3.2.0",
+    "nock": "^9.0.2",
+    "should": "^11.1.2"
   }
 }

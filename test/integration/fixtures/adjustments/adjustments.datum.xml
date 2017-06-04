@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adjustments type="array">
+    <adjustment href="https://your-subdomain.recurly.com/v2/adjustments/37bff9dd3ec90471cf62bd4f6f80db3d" type="charge">
+        <account href="https://your-subdomain.recurly.com/v2/accounts/1"/>
+        <invoice href="https://your-subdomain.recurly.com/v2/invoices/1006"/>
+        <subscription href="https://your-subdomain.recurly.com/v2/subscriptions/37bfef7a8e44cfc3817b7a43eba8a6e6"/>
+        <uuid>37bff9dd3ec90471cf62bd4f6f80db3d</uuid>
+        <state>invoiced</state>
+        <description>Refund for Setup fee: Gold plan</description>
+        <accounting_code nil="nil"/>
+        <product_code>gold</product_code>
+        <origin>setup_fee</origin>
+        <unit_amount_in_cents type="integer">800</unit_amount_in_cents>
+        <quantity type="integer">-1</quantity>
+        <quantity_remaining type="integer">0</quantity_remaining>
+        <original_adjustment_uuid>37bfef7af3cd23ee89d77a435aa1838d</original_adjustment_uuid>
+        <discount_in_cents type="integer">0</discount_in_cents>
+        <tax_in_cents type="integer">-70</tax_in_cents>
+        <total_in_cents type="integer">-870</total_in_cents>
+        <currency>EUR</currency>
+        <taxable type="boolean">false</taxable>
+        <tax_type>usst</tax_type>
+        <tax_region>CA</tax_region>
+        <tax_rate type="float">0.0875</tax_rate>
+        <tax_exempt type="boolean">false</tax_exempt>
+        <tax_code nil="nil"/>
+        <tax_details type="array">
+            <tax_detail>
+                <name nil="nil"/>
+                <type>state</type>
+                <tax_rate type="float">0.065</tax_rate>
+                <tax_in_cents type="integer">-52</tax_in_cents>
+            </tax_detail>
+            <tax_detail>
+                <name nil="nil"/>
+                <type>county</type>
+                <tax_rate type="float">0.01</tax_rate>
+                <tax_in_cents type="integer">-8</tax_in_cents>
+            </tax_detail>
+            <tax_detail>
+                <name nil="nil"/>
+                <type>city</type>
+                <tax_rate type="float">0.0</tax_rate>
+                <tax_in_cents type="integer">0</tax_in_cents>
+            </tax_detail>
+            <tax_detail>
+                <name nil="nil"/>
+                <type>special</type>
+                <tax_rate type="float">0.0125</tax_rate>
+                <tax_in_cents type="integer">-10</tax_in_cents>
+            </tax_detail>
+        </tax_details>
+        <start_date type="datetime">2016-08-03T16:02:24Z</start_date>
+        <end_date nil="nil"/>
+        <created_at type="datetime">2016-08-03T16:13:44Z</created_at>
+        <updated_at type="datetime">2016-08-03T16:13:44Z</updated_at>
+        <revenue_schedule_type>evenly</revenue_schedule_type>
+    </adjustment>
+</adjustments>

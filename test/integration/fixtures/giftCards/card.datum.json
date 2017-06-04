@@ -1,0 +1,38 @@
+{
+  "gift_card": {
+    "gifter_account": "",
+    "invoice": "",
+    "recipient_account": "",
+    "id": 2003020297591186200,
+    "redemption_code": "518822D87268C142",
+    "balance_in_cents": 500,
+    "product_code": "gift_card",
+    "unit_amount_in_cents": 1000,
+    "currency": "USD",
+    "delivery": {
+      "method": "post",
+      "email_address": "john@example.com",
+      "deliver_at": "",
+      "first_name": "John",
+      "last_name": "Smith",
+      "address": {
+        "address1": "123 B St.",
+        "address2": "",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": 94110,
+        "country": "USA",
+        "phone": ""
+      },
+      "gifter_name": "Sally",
+      "personal_message": "\n            Hi John, Happy Birthday! I hope you have a great day! Love, Sally"
+    },
+    "created_at": 1469546626000,
+    "updated_at": 1469766339000,
+    "delivered_at": "",
+    "redeemed_at": 1469766338000
+  },
+  "headers": {
+    "content-type": "application/xml"
+  }
+}

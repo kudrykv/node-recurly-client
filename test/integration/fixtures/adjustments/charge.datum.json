@@ -1,0 +1,28 @@
+{
+  "adjustment": {
+    "account": "",
+    "uuid": "37c0031340577f993ff30b41738f52ff",
+    "state": "pending",
+    "description": "",
+    "accounting_code": "",
+    "product_code": "",
+    "origin": "debit",
+    "unit_amount_in_cents": 300,
+    "quantity": 1,
+    "discount_in_cents": 0,
+    "tax_in_cents": 0,
+    "total_in_cents": 5000,
+    "currency": "USD",
+    "taxable": false,
+    "tax_exempt": false,
+    "tax_code": "",
+    "start_date": 1470241428000,
+    "end_date": "",
+    "created_at": 1470241428000,
+    "updated_at": 1470241428000,
+    "revenue_schedule_type": "at_invoice"
+  },
+  "headers": {
+    "content-type": "application/xml"
+  }
+}

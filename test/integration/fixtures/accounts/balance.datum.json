@@ -1,0 +1,13 @@
+{
+  "account_balance": {
+    "account": "",
+    "past_due": false,
+    "balance_in_cents": {
+      "USD": 3000,
+      "EUR": 0
+    }
+  },
+  "headers": {
+    "content-type": "application/xml"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "accounts": {
+    "account": {
+      "adjustments": "",
+      "account_balance": "",
+      "invoices": "",
+      "shipping_addresses": "",
+      "subscriptions": "",
+      "transactions": "",
+      "account_code": "deadbeef1483819734930",
+      "state": "active",
+      "username": "",
+      "email": "deadbeef1483819734930@dummy.com",
+      "cc_emails": "",
+      "first_name": "",
+      "last_name": "",
+      "company_name": "",
+      "vat_number": "",
+      "address": {
+        "address1": "",
+        "address2": "",
+        "city": "",
+        "state": "",
+        "zip": "",
+        "country": "",
+        "phone": ""
+      },
+      "accept_language": "",
+      "hosted_login_token": "48dfc02eb4af7fba8480c9495f249855",
+      "created_at": 1483820472000,
+      "updated_at": 1483820472000,
+      "closed_at": ""
+    }
+  },
+  "headers": {
+    "content-type": "application/xml"
+  }
+}

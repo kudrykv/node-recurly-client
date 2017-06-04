@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<redemptions type="array">
+    <redemption href="https://your-subdomain.recurly.com/v2/accounts/1/redemptions/316a4213e8fa9e97390aff4995bda9e6">
+        <coupon href="https://your-subdomain.recurly.com/v2/coupons/special" />
+        <account href="https://your-subdomain.recurly.com/v2/accounts/1" />
+        <subscription href="https://your-subdomain.recurly.com/v2/subscriptions/315fbd7a25b04f1333ea9f4418994fb5" />
+        <uuid>316a4213e8fa9e97390aff4995bda9e6</uuid>
+        <single_use type="boolean">false</single_use>
+        <total_discounted_in_cents type="integer">0</total_discounted_in_cents>
+        <currency>USD</currency>
+        <state>active</state>
+        <coupon_code>special</coupon_code>
+        <created_at type="datetime">2016-06-15T17:13:30Z</created_at>
+        <updated_at type="datetime">2016-06-15T17:13:30Z</updated_at>
+    </redemption>
+    <redemption href="https://your-subdomain.recurly.com/v2/accounts/1/redemptions/3169fd6127ff82ccbfa08a442188d575">
+        <coupon href="https://your-subdomain.recurly.com/v2/coupons/special" />
+        <account href="https://your-subdomain.recurly.com/v2/accounts/1" />
+        <uuid>3169fd6127ff82ccbfa08a442188d575</uuid>
+        <single_use type="boolean">false</single_use>
+        <total_discounted_in_cents type="integer">1500</total_discounted_in_cents>
+        <currency>USD</currency>
+        <state>active</state>
+        <coupon_code>special</coupon_code>
+        <created_at type="datetime">2016-05-27T12:34:56Z</created_at>
+        <updated_at type="datetime">2016-06-15T17:13:30Z</updated_at>
+    </redemption>
+</redemptions>

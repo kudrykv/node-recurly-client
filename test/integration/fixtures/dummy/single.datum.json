@@ -1,0 +1,32 @@
+{
+  "dummy": {
+    "redemptions": "",
+    "coupon_code": "deadbeef",
+    "name": "Coupon for testing purposes",
+    "state": "redeemable",
+    "description": "",
+    "discount_type": "percent",
+    "discount_percent": 10,
+    "invoice_description": "",
+    "redeem_by_date": "",
+    "single_use": true,
+    "applies_for_months": "",
+    "max_redemptions": 200,
+    "applies_to_all_plans": false,
+    "created_at": 1468263017000,
+    "updated_at": 1468263017000,
+    "deleted_at": "",
+    "duration": "single_use",
+    "temporal_unit": "",
+    "temporal_amount": "",
+    "applies_to_non_plan_charges": false,
+    "redemption_resource": "account",
+    "max_redemptions_per_account": "",
+    "coupon_type": "single_code",
+    "plan_codes": "",
+    "a": ""
+  },
+  "headers": {
+    "content-type": "application/xml"
+  }
+}

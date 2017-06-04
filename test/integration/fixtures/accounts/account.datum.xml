@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<account href="https://fubotv-dev.recurly.com/v2/accounts/deadbeef1483819734930">
+    <adjustments href="https://fubotv-dev.recurly.com/v2/accounts/deadbeef1483819734930/adjustments"/>
+    <account_balance href="https://fubotv-dev.recurly.com/v2/accounts/deadbeef1483819734930/balance"/>
+    <invoices href="https://fubotv-dev.recurly.com/v2/accounts/deadbeef1483819734930/invoices"/>
+    <shipping_addresses href="https://fubotv-dev.recurly.com/v2/accounts/deadbeef1483819734930/shipping_addresses"/>
+    <subscriptions href="https://fubotv-dev.recurly.com/v2/accounts/deadbeef1483819734930/subscriptions"/>
+    <transactions href="https://fubotv-dev.recurly.com/v2/accounts/deadbeef1483819734930/transactions"/>
+    <account_code>deadbeef1483819734930</account_code>
+    <state>active</state>
+    <username nil="nil"></username>
+    <email>deadbeef1483819734930@dummy.com</email>
+    <cc_emails nil="nil"></cc_emails>
+    <first_name nil="nil"></first_name>
+    <last_name nil="nil"></last_name>
+    <company_name nil="nil"></company_name>
+    <vat_number nil="nil"></vat_number>
+    <address>
+        <address1 nil="nil"></address1>
+        <address2 nil="nil"></address2>
+        <city nil="nil"></city>
+        <state nil="nil"></state>
+        <zip nil="nil"></zip>
+        <country nil="nil"></country>
+        <phone nil="nil"></phone>
+    </address>
+    <accept_language nil="nil"></accept_language>
+    <hosted_login_token>48dfc02eb4af7fba8480c9495f249855</hosted_login_token>
+    <created_at type="datetime">2017-01-07T20:21:12Z</created_at>
+    <updated_at type="datetime">2017-01-07T20:21:12Z</updated_at>
+    <closed_at nil="nil"></closed_at>
+</account>

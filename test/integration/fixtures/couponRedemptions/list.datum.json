@@ -1,0 +1,34 @@
+{
+  "redemptions": {
+    "redemption": [
+      {
+        "coupon": "",
+        "account": "",
+        "subscription": "",
+        "uuid": "316a4213e8fa9e97390aff4995bda9e6",
+        "single_use": false,
+        "total_discounted_in_cents": 0,
+        "currency": "USD",
+        "state": "active",
+        "coupon_code": "special",
+        "created_at": 1466010810000,
+        "updated_at": 1466010810000
+      },
+      {
+        "coupon": "",
+        "account": "",
+        "uuid": "3169fd6127ff82ccbfa08a442188d575",
+        "single_use": false,
+        "total_discounted_in_cents": 1500,
+        "currency": "USD",
+        "state": "active",
+        "coupon_code": "special",
+        "created_at": 1464352496000,
+        "updated_at": 1466010810000
+      }
+    ]
+  },
+  "headers": {
+    "content-type": "application/xml"
+  }
+}
