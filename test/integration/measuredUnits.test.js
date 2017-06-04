@@ -13,7 +13,7 @@ var rNock = nock('https://' + keys.subdomain + '.recurly.com').defaultReplyHeade
 
 var validateGenericSuccessfulResponse = require('./utils/validateGenericSuccessfulResponse');
 
-describe('Invoices', function () {
+describe('Measured units', function () {
   beforeEach(function () {
     nock.cleanAll();
   });
