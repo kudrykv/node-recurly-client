@@ -12,7 +12,6 @@ var rNock = nock('https://' + keys.subdomain + '.recurly.com').defaultReplyHeade
 });
 
 var validateGenericSuccessfulResponse = require('./utils/validateGenericSuccessfulResponse');
-var validateGenericFailureResponse = require('./utils/validateGenericFailureResponse');
 
 describe('Invoices', function () {
   beforeEach(function () {
