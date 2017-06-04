@@ -14,7 +14,7 @@ var rNock = nock('https://' + keys.subdomain + '.recurly.com').defaultReplyHeade
 var validateGenericSuccessfulResponse = require('./utils/validateGenericSuccessfulResponse');
 var validateGenericFailureResponse = require('./utils/validateGenericFailureResponse');
 
-describe('Coupons', function () {
+describe('Gift Cards', function () {
   beforeEach(function () {
     nock.cleanAll();
   });
